@@ -1,0 +1,1138 @@
+[
+  {
+    "symbol": "HDFCBANK",
+    "companyName": "HDFC Bank",
+    "sector": "Financial",
+    "fixed": {
+      "purchasePrice": 1490,
+      "qty": 50,
+      "investment": 74500,
+      "portfolioPercent": "5%",
+      "stage2": true
+    },
+    "realtime": {
+      "cmp": 1000,
+      "presentValue": 50020,
+      "gainLoss": -24480,
+      "gainLossPercent": "-32.86%",
+      "marketCap": 1538246
+    },
+    "fundamentals": {
+      "peTTM": 21.26,
+      "latestEarnings": 47.02,
+      "revenueTTM": "321,990",
+      "ebitdaTTM": 106757,
+      "ebitdaPercent": "33%",
+      "pat": "69,181",
+      "patPercent": "21%",
+      "cfoMarch24": -3983,
+      "cfo5Years": 85155,
+      "debtToEquity": 7,
+      "bookValue": 693,
+      "revenueGrowth": "30.19%",
+      "ebitdaGrowth": "50.23%",
+      "profitGrowth": "26.25%",
+      "marketCapGrowth": "10%",
+      "priceToSales": 4.78,
+      "cfoToEbitda": "-2680%",
+      "cfoToPat": "-1737%",
+      "priceToBook": 1.4
+    }
+  },
+  {
+    "symbol": "BAJFINANCE",
+    "companyName": "Bajaj Finance",
+    "sector": "Financial",
+    "fixed": {
+      "purchasePrice": 6466,
+      "qty": 15,
+      "investment": 96990,
+      "portfolioPercent": "6%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 1020,
+      "presentValue": 15301.5,
+      "gainLoss": -81688.5,
+      "gainLossPercent": "-84.22%",
+      "marketCap": 634255
+    },
+    "fundamentals": {
+      "peTTM": 34.71,
+      "latestEarnings": 29.44,
+      "revenueTTM": "62,279",
+      "ebitdaTTM": 43336,
+      "ebitdaPercent": "70%",
+      "pat": "15,375",
+      "patPercent": "25%",
+      "cfoMarch24": 82415,
+      "cfo5Years": 201273,
+      "debtToEquity": 4,
+      "bookValue": "1,253",
+      "revenueGrowth": "27.26%",
+      "ebitdaGrowth": "68.23%",
+      "profitGrowth": "48.42%",
+      "marketCapGrowth": "13%",
+      "priceToSales": 10.18,
+      "cfoToEbitda": "53%",
+      "cfoToPat": "19%",
+      "priceToBook": 0.8
+    }
+  },
+  {
+    "symbol": "532174",
+    "companyName": "ICICI Bank",
+    "sector": "Financial",
+    "fixed": {
+      "purchasePrice": 780,
+      "qty": 84,
+      "investment": 65520,
+      "portfolioPercent": "4%",
+      "stage2": true
+    },
+    "realtime": {
+      "cmp": 1377,
+      "presentValue": 115642.8,
+      "gainLoss": 50122.8,
+      "gainLossPercent": "76.50%",
+      "marketCap": 984007
+    },
+    "fundamentals": {
+      "peTTM": 18.62,
+      "latestEarnings": 73.97,
+      "revenueTTM": "174,379",
+      "ebitdaTTM": 57238,
+      "ebitdaPercent": "33%",
+      "pat": "47,368",
+      "patPercent": "27%",
+      "cfoMarch24": 13765,
+      "cfo5Years": 4332,
+      "debtToEquity": 6,
+      "bookValue": 366,
+      "revenueGrowth": "21.40%",
+      "ebitdaGrowth": "28.66%",
+      "profitGrowth": "34.02%",
+      "marketCapGrowth": "24%",
+      "priceToSales": 5.64,
+      "cfoToEbitda": "416%",
+      "cfoToPat": "344%",
+      "priceToBook": 3.8
+    }
+  },
+  {
+    "symbol": "544252",
+    "companyName": "Bajaj Housing",
+    "sector": "Financial",
+    "fixed": {
+      "purchasePrice": 130,
+      "qty": 504,
+      "investment": 65520,
+      "portfolioPercent": "4%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 95,
+      "presentValue": 48056.4,
+      "gainLoss": -17463.6,
+      "gainLossPercent": "-26.65%",
+      "marketCap": 187894
+    },
+    "fundamentals": {
+      "peTTM": 115.18,
+      "latestEarnings": 2.57,
+      "revenueTTM": "8,527",
+      "ebitdaTTM": 7783,
+      "ebitdaPercent": "91%",
+      "pat": "1,861",
+      "patPercent": "22%",
+      "cfoMarch24": 15125,
+      "cfo5Years": 46789,
+      "debtToEquity": 6,
+      "bookValue": 18,
+      "revenueGrowth": "34.16%",
+      "ebitdaGrowth": "87.90%",
+      "profitGrowth": "56.32%",
+      "priceToSales": 22.04,
+      "cfoToEbitda": "51%",
+      "cfoToPat": "12%",
+      "priceToBook": 5.2
+    }
+  },
+  {
+    "symbol": "511577",
+    "companyName": "Savani Financials",
+    "sector": "Financial",
+    "fixed": {
+      "purchasePrice": 24,
+      "qty": 1080,
+      "investment": 25920,
+      "portfolioPercent": "2%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 16,
+      "presentValue": 17247.6,
+      "gainLoss": -8672.4,
+      "gainLossPercent": "-33.46%",
+      "marketCap": 51
+    },
+    "fundamentals": {
+      "latestEarnings": -7.54
+    }
+  },
+  {
+    "symbol": "AFFLE",
+    "companyName": "Affle India",
+    "sector": "Tech",
+    "fixed": {
+      "purchasePrice": 1151,
+      "qty": 50,
+      "investment": 57550,
+      "portfolioPercent": "4%",
+      "stage2": true
+    },
+    "realtime": {
+      "cmp": 1623,
+      "presentValue": 81130,
+      "gainLoss": 23580,
+      "gainLossPercent": "40.97%",
+      "marketCap": 22801
+    },
+    "fundamentals": {
+      "peTTM": 54.6,
+      "latestEarnings": 29.83,
+      "revenueTTM": "2,067",
+      "ebitdaTTM": 412,
+      "ebitdaPercent": "20%",
+      "pat": 343,
+      "patPercent": "17%",
+      "cfoMarch24": 262,
+      "cfo5Years": 902,
+      "debtToEquity": 0,
+      "bookValue": 183,
+      "revenueGrowth": "52.78%",
+      "ebitdaGrowth": "19.75%",
+      "profitGrowth": "30.16%",
+      "marketCapGrowth": "2%",
+      "priceToSales": 11.03,
+      "cfoToEbitda": "157%",
+      "cfoToPat": "131%",
+      "priceToBook": 8.9
+    }
+  },
+  {
+    "symbol": "LTIM",
+    "companyName": "LTI Mindtree",
+    "sector": "Tech",
+    "fixed": {
+      "purchasePrice": 4775,
+      "qty": 16,
+      "investment": 76400,
+      "portfolioPercent": "5%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 6243,
+      "presentValue": 99888,
+      "gainLoss": 23488,
+      "gainLossPercent": "30.74%",
+      "marketCap": 186538
+    },
+    "fundamentals": {
+      "peTTM": 34.69,
+      "latestEarnings": 145.92,
+      "revenueTTM": "36,485",
+      "ebitdaTTM": 6426,
+      "ebitdaPercent": "18%",
+      "pat": "4,654",
+      "patPercent": "13%",
+      "cfoMarch24": 5670,
+      "cfo5Years": 16058,
+      "debtToEquity": 0,
+      "bookValue": 676,
+      "revenueGrowth": "42.13%",
+      "ebitdaGrowth": "18.72%",
+      "profitGrowth": "33.26%",
+      "marketCapGrowth": "27%",
+      "priceToSales": 5.11,
+      "cfoToEbitda": "113%",
+      "cfoToPat": "82%",
+      "priceToBook": 9.2
+    }
+  },
+  {
+    "symbol": "542651",
+    "companyName": "KPIT Tech",
+    "sector": "Tech",
+    "fixed": {
+      "purchasePrice": 672,
+      "qty": 61,
+      "investment": 40992,
+      "portfolioPercent": "3%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 1217,
+      "presentValue": 74252.25,
+      "gainLoss": 33260.25,
+      "gainLossPercent": "81.14%",
+      "marketCap": 33126
+    },
+    "fundamentals": {
+      "peTTM": 43.14,
+      "latestEarnings": 28.23,
+      "revenueTTM": "5,411",
+      "ebitdaTTM": 1116,
+      "ebitdaPercent": "21%",
+      "pat": 728,
+      "patPercent": "13%",
+      "cfoMarch24": 1002,
+      "cfo5Years": 2956,
+      "debtToEquity": 0,
+      "bookValue": 78,
+      "revenueGrowth": "33.76%",
+      "ebitdaGrowth": "19.45%",
+      "profitGrowth": "59.64%",
+      "marketCapGrowth": "103%",
+      "priceToSales": 6.12,
+      "cfoToEbitda": "111%",
+      "cfoToPat": "73%",
+      "priceToBook": 15.6
+    }
+  },
+  {
+    "symbol": "544028",
+    "companyName": "Tata Tech",
+    "sector": "Tech",
+    "fixed": {
+      "purchasePrice": 1072,
+      "qty": 63,
+      "investment": 67536,
+      "portfolioPercent": "4%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 653,
+      "presentValue": 41139,
+      "gainLoss": -26397,
+      "gainLossPercent": "-39.09%",
+      "marketCap": 26505
+    },
+    "fundamentals": {
+      "peTTM": 38.34,
+      "latestEarnings": 17.07,
+      "revenueTTM": "5,156",
+      "ebitdaTTM": 943,
+      "ebitdaPercent": "18%",
+      "pat": 647,
+      "patPercent": "13%",
+      "cfoMarch24": 294,
+      "cfo5Years": 2037,
+      "debtToEquity": 0,
+      "bookValue": 79,
+      "revenueGrowth": "29.05%",
+      "ebitdaGrowth": "18.44%",
+      "profitGrowth": "41.62%",
+      "priceToSales": 5.14,
+      "cfoToEbitda": "321%",
+      "cfoToPat": "220%",
+      "priceToBook": 8.3
+    }
+  },
+  {
+    "symbol": "544107",
+    "companyName": "BLS E-Services",
+    "sector": "Tech",
+    "fixed": {
+      "purchasePrice": 232,
+      "qty": 191,
+      "investment": 44312,
+      "portfolioPercent": "3%",
+      "stage2": true
+    },
+    "realtime": {
+      "cmp": 209,
+      "presentValue": 39995.4,
+      "gainLoss": -4316.6,
+      "gainLossPercent": "-9.74%",
+      "marketCap": 1900
+    },
+    "fundamentals": {
+      "peTTM": 33.6,
+      "latestEarnings": 6.22,
+      "revenueTTM": 298,
+      "ebitdaTTM": 46,
+      "ebitdaPercent": "16%",
+      "pat": 44,
+      "patPercent": "15%",
+      "cfoMarch24": 20,
+      "cfo5Years": 77,
+      "debtToEquity": 0,
+      "bookValue": 55,
+      "revenueGrowth": "67.21%",
+      "ebitdaGrowth": "12.79%",
+      "profitGrowth": "115.22%",
+      "priceToSales": 6.38,
+      "cfoToEbitda": "230%",
+      "cfoToPat": "220%",
+      "priceToBook": 3.8
+    }
+  },
+  {
+    "symbol": "532790",
+    "companyName": "Tanla",
+    "sector": "Tech",
+    "fixed": {
+      "purchasePrice": 1134,
+      "qty": 45,
+      "investment": 51030,
+      "portfolioPercent": "3%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 543,
+      "presentValue": 24448.5,
+      "gainLoss": -26581.5,
+      "gainLossPercent": "-52.09%",
+      "marketCap": 7167
+    },
+    "fundamentals": {
+      "peTTM": 15.21,
+      "latestEarnings": 39.9,
+      "revenueTTM": "4,011",
+      "ebitdaTTM": 717,
+      "ebitdaPercent": "18%",
+      "pat": 542,
+      "patPercent": "14%",
+      "cfoMarch24": 590,
+      "cfo5Years": 2124,
+      "debtToEquity": 0,
+      "bookValue": 144,
+      "revenueGrowth": "18.82%",
+      "ebitdaGrowth": "19.33%",
+      "profitGrowth": "15.47%",
+      "marketCapGrowth": "0%",
+      "priceToSales": 1.79,
+      "cfoToEbitda": "122%",
+      "cfoToPat": "92%",
+      "priceToBook": 3.8
+    }
+  },
+  {
+    "symbol": "DMART",
+    "companyName": "Dmart",
+    "sector": "Consumer",
+    "fixed": {
+      "purchasePrice": 3777,
+      "qty": 27,
+      "investment": 101979,
+      "portfolioPercent": "7%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 3890,
+      "presentValue": 105030,
+      "gainLoss": 3051,
+      "gainLossPercent": "2.99%",
+      "marketCap": 253591
+    },
+    "fundamentals": {
+      "peTTM": 93.11,
+      "latestEarnings": 41.88,
+      "revenueTTM": "54,813",
+      "ebitdaTTM": 4379,
+      "ebitdaPercent": "8%",
+      "pat": "2,687",
+      "patPercent": "5%",
+      "cfoMarch24": 2746,
+      "cfo5Years": 9404,
+      "debtToEquity": 0,
+      "bookValue": 288,
+      "revenueGrowth": "28.13%",
+      "ebitdaGrowth": "8.22%",
+      "profitGrowth": "32.13%",
+      "marketCapGrowth": "17%",
+      "priceToSales": 4.63,
+      "cfoToEbitda": "159%",
+      "cfoToPat": "98%",
+      "priceToBook": 13.5
+    }
+  },
+  {
+    "symbol": "532540",
+    "companyName": "Tata Consumer",
+    "sector": "Consumer",
+    "fixed": {
+      "purchasePrice": 845,
+      "qty": 90,
+      "investment": 76050,
+      "portfolioPercent": "5%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 1146,
+      "presentValue": 103149,
+      "gainLoss": 27099,
+      "gainLossPercent": "35.63%",
+      "marketCap": 1159199
+    },
+    "fundamentals": {
+      "peTTM": 23.47,
+      "latestEarnings": 136.64,
+      "revenueTTM": "248,692",
+      "ebitdaTTM": 66945,
+      "ebitdaPercent": "27%",
+      "pat": "47,441",
+      "patPercent": "19%",
+      "cfoMarch24": 44338,
+      "cfo5Years": 197423,
+      "debtToEquity": 0,
+      "bookValue": 249,
+      "revenueGrowth": "13.63%",
+      "ebitdaGrowth": "26.84%",
+      "profitGrowth": "12.28%",
+      "marketCapGrowth": "6%",
+      "priceToSales": 4.66,
+      "cfoToEbitda": "151%",
+      "cfoToPat": "107%",
+      "priceToBook": 4.6
+    }
+  },
+  {
+    "symbol": "500331",
+    "companyName": "Pidilite",
+    "sector": "Consumer",
+    "fixed": {
+      "purchasePrice": 2376,
+      "qty": 36,
+      "investment": 85536,
+      "portfolioPercent": "6%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 1454,
+      "presentValue": 52353,
+      "gainLoss": -33183,
+      "gainLossPercent": "-38.79%",
+      "marketCap": 148484
+    },
+    "fundamentals": {
+      "peTTM": 66.84,
+      "latestEarnings": 21.84,
+      "revenueTTM": "12,662",
+      "ebitdaTTM": 2897,
+      "ebitdaPercent": "23%",
+      "pat": "1,913",
+      "patPercent": "15%",
+      "cfoMarch24": 2724,
+      "cfo5Years": 7909,
+      "debtToEquity": 0,
+      "bookValue": 165,
+      "revenueGrowth": "19.30%",
+      "ebitdaGrowth": "19.21%",
+      "profitGrowth": "15.20%",
+      "marketCapGrowth": "19%",
+      "priceToSales": 11.73,
+      "cfoToEbitda": "106%",
+      "cfoToPat": "70%",
+      "priceToBook": 8.8
+    }
+  },
+  {
+    "symbol": "500400",
+    "companyName": "Tata Power",
+    "sector": "Power",
+    "fixed": {
+      "purchasePrice": 224,
+      "qty": 225,
+      "investment": 50400,
+      "portfolioPercent": "3%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 377,
+      "presentValue": 84881.25,
+      "gainLoss": 34481.25,
+      "gainLossPercent": "68.42%",
+      "marketCap": 120512
+    },
+    "fundamentals": {
+      "peTTM": 29.79,
+      "latestEarnings": 12.67,
+      "revenueTTM": "63,489",
+      "ebitdaTTM": 11057,
+      "ebitdaPercent": "17%",
+      "pat": "3,746",
+      "patPercent": "6%",
+      "cfoMarch24": 12596,
+      "cfo5Years": 42175,
+      "debtToEquity": 2,
+      "bookValue": 101,
+      "revenueGrowth": "23.40%",
+      "ebitdaGrowth": "16.00%",
+      "profitGrowth": "48.56%",
+      "marketCapGrowth": "56%",
+      "priceToSales": 1.9,
+      "cfoToEbitda": "88%",
+      "cfoToPat": "30%",
+      "priceToBook": 3.7
+    }
+  },
+  {
+    "symbol": "542323",
+    "companyName": "KPI Green",
+    "sector": "Power",
+    "fixed": {
+      "purchasePrice": 875,
+      "qty": 50,
+      "investment": 43750,
+      "portfolioPercent": "3%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 400,
+      "presentValue": 20007.5,
+      "gainLoss": -23742.5,
+      "gainLossPercent": "-54.27%",
+      "marketCap": 7893
+    },
+    "fundamentals": {
+      "peTTM": 20.52,
+      "latestEarnings": 19.46,
+      "revenueTTM": "1,327",
+      "ebitdaTTM": 462,
+      "ebitdaPercent": "35%",
+      "pat": 230,
+      "patPercent": "17%",
+      "cfoMarch24": -57,
+      "cfo5Years": 217,
+      "debtToEquity": 1,
+      "bookValue": 73,
+      "revenueGrowth": "115.52%",
+      "ebitdaGrowth": "34.47%",
+      "profitGrowth": "94.65%",
+      "marketCapGrowth": "370%",
+      "priceToSales": 5.95,
+      "cfoToEbitda": "-811%",
+      "cfoToPat": "-404%",
+      "priceToBook": 5.5
+    }
+  },
+  {
+    "symbol": "532667",
+    "companyName": "Suzlon",
+    "sector": "Power",
+    "fixed": {
+      "purchasePrice": 44,
+      "qty": 450,
+      "investment": 19800,
+      "portfolioPercent": "1%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 53,
+      "presentValue": 23625,
+      "gainLoss": 3825,
+      "gainLossPercent": "19.32%",
+      "marketCap": 71916
+    },
+    "fundamentals": {
+      "peTTM": 22.78,
+      "latestEarnings": 2.31,
+      "revenueTTM": "7,882",
+      "ebitdaTTM": 1269,
+      "ebitdaPercent": "16%",
+      "pat": 960,
+      "patPercent": "12%",
+      "cfoMarch24": 80,
+      "cfo5Years": 1474,
+      "debtToEquity": 0,
+      "bookValue": 3,
+      "revenueGrowth": "24.96%",
+      "ebitdaGrowth": "14.52%",
+      "profitGrowth": "85.07%",
+      "marketCapGrowth": "124%",
+      "priceToSales": 9.12,
+      "cfoToEbitda": "1586%",
+      "cfoToPat": "1200%",
+      "priceToBook": 17.5
+    }
+  },
+  {
+    "symbol": "542851",
+    "companyName": "Gensol",
+    "sector": "Power",
+    "fixed": {
+      "purchasePrice": 998,
+      "qty": 45,
+      "investment": 44910,
+      "portfolioPercent": "3%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 27,
+      "presentValue": 1208.7,
+      "gainLoss": -43701.3,
+      "gainLossPercent": "-97.31%",
+      "marketCap": 7727
+    },
+    "fundamentals": {
+      "peTTM": 39.51,
+      "latestEarnings": 5.57,
+      "revenueTTM": "1,328",
+      "ebitdaTTM": 323,
+      "ebitdaPercent": "24%",
+      "pat": 98,
+      "patPercent": "7%",
+      "cfoMarch24": -98,
+      "cfo5Years": -42,
+      "debtToEquity": 5,
+      "bookValue": 87,
+      "revenueGrowth": "146.92%",
+      "ebitdaGrowth": "21.50%",
+      "profitGrowth": "165.28%",
+      "marketCapGrowth": "278%",
+      "priceToSales": 5.82,
+      "cfoToEbitda": "-330%",
+      "cfoToPat": "-100%",
+      "priceToBook": 0.3
+    }
+  },
+  {
+    "symbol": "543517",
+    "companyName": "Hariom Pipes",
+    "sector": "Pipe",
+    "fixed": {
+      "purchasePrice": 580,
+      "qty": 60,
+      "investment": 34800,
+      "portfolioPercent": "2%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 346,
+      "presentValue": 20766,
+      "gainLoss": -14034,
+      "gainLossPercent": "-40.33%",
+      "marketCap": 1071
+    },
+    "fundamentals": {
+      "peTTM": 17.16,
+      "latestEarnings": 20.17,
+      "revenueTTM": "1,268",
+      "ebitdaTTM": 162,
+      "ebitdaPercent": "13%",
+      "pat": 60,
+      "patPercent": "5%",
+      "cfoMarch24": 5,
+      "cfo5Years": -81,
+      "debtToEquity": 1,
+      "bookValue": 164,
+      "revenueGrowth": "65.56%",
+      "ebitdaGrowth": "12.42%",
+      "profitGrowth": "55.42%",
+      "priceToSales": 0.84,
+      "cfoToEbitda": "3240%",
+      "cfoToPat": "1200%",
+      "priceToBook": 2.1
+    }
+  },
+  {
+    "symbol": "ASTRAL",
+    "companyName": "Astral",
+    "sector": "Pipe",
+    "fixed": {
+      "purchasePrice": 1517,
+      "qty": 56,
+      "investment": 84952,
+      "portfolioPercent": "6%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 1432,
+      "presentValue": 80208.8,
+      "gainLoss": -4743.2,
+      "gainLossPercent": "-5.58%",
+      "marketCap": 38479
+    },
+    "fundamentals": {
+      "peTTM": 102.64,
+      "latestEarnings": 13.95,
+      "revenueTTM": "5,749",
+      "ebitdaTTM": 921,
+      "ebitdaPercent": "16%",
+      "pat": 526,
+      "patPercent": "9%",
+      "cfoMarch24": 823,
+      "cfo5Years": 2993,
+      "debtToEquity": 0,
+      "bookValue": 119,
+      "revenueGrowth": "21.10%",
+      "ebitdaGrowth": "16.37%",
+      "profitGrowth": "10.53%",
+      "marketCapGrowth": "18%",
+      "priceToSales": 6.69,
+      "cfoToEbitda": "112%",
+      "cfoToPat": "64%",
+      "priceToBook": 12
+    }
+  },
+  {
+    "symbol": "542652",
+    "companyName": "Polycab",
+    "sector": "Pipe",
+    "fixed": {
+      "purchasePrice": 2818,
+      "qty": 28,
+      "investment": 78904,
+      "portfolioPercent": "5%",
+      "stage2": true
+    },
+    "realtime": {
+      "cmp": 7110,
+      "presentValue": 199078.6,
+      "gainLoss": 120174.6,
+      "gainLossPercent": "152.30%",
+      "marketCap": 107025
+    },
+    "fundamentals": {
+      "peTTM": 43.62,
+      "latestEarnings": 163.09,
+      "revenueTTM": "20,129",
+      "ebitdaTTM": 2546,
+      "ebitdaPercent": "13%",
+      "pat": "1,795",
+      "patPercent": "9%",
+      "cfoMarch24": 1296,
+      "cfo5Years": 4732,
+      "debtToEquity": 0,
+      "bookValue": 546,
+      "revenueGrowth": "27.07%",
+      "ebitdaGrowth": "12.62%",
+      "profitGrowth": "26.46%",
+      "marketCapGrowth": "55%",
+      "priceToSales": 5.32,
+      "cfoToEbitda": "196%",
+      "cfoToPat": "139%",
+      "priceToBook": 13
+    }
+  },
+  {
+    "symbol": "543318",
+    "companyName": "Clean Science",
+    "sector": "Others",
+    "fixed": {
+      "purchasePrice": 1610,
+      "qty": 32,
+      "investment": 51520,
+      "portfolioPercent": "3%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 891,
+      "presentValue": 28512,
+      "gainLoss": -23008,
+      "gainLossPercent": "-44.66%",
+      "marketCap": 9451
+    },
+    "fundamentals": {
+      "peTTM": 45.1,
+      "latestEarnings": 19.74,
+      "revenueTTM": 884,
+      "ebitdaTTM": 365,
+      "ebitdaPercent": "41%",
+      "pat": 258,
+      "patPercent": "29%",
+      "cfoMarch24": 237,
+      "cfo5Years": 997,
+      "debtToEquity": 0,
+      "bookValue": 113,
+      "revenueGrowth": "15.59%",
+      "ebitdaGrowth": "42.91%",
+      "profitGrowth": "7.15%",
+      "priceToSales": 10.69,
+      "cfoToEbitda": "154%",
+      "cfoToPat": "109%",
+      "priceToBook": 7.9
+    }
+  },
+  {
+    "symbol": "506401",
+    "companyName": "Deepak Nitrite",
+    "sector": "Others",
+    "fixed": {
+      "purchasePrice": 2248,
+      "qty": 27,
+      "investment": 60696,
+      "portfolioPercent": "4%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 1538,
+      "presentValue": 41535.45,
+      "gainLoss": -19160.55,
+      "gainLossPercent": "-31.57%",
+      "marketCap": 16511
+    },
+    "fundamentals": {
+      "peTTM": 51.51,
+      "latestEarnings": 30.96,
+      "revenueTTM": "8,334",
+      "ebitdaTTM": 1212,
+      "ebitdaPercent": "15%",
+      "pat": 853,
+      "patPercent": "10%",
+      "cfoMarch24": 878,
+      "cfo5Years": 4118,
+      "debtToEquity": 0,
+      "bookValue": 352,
+      "revenueGrowth": "20.78%",
+      "ebitdaGrowth": "17.93%",
+      "profitGrowth": "1.49%",
+      "marketCapGrowth": "9%",
+      "priceToSales": 1.98,
+      "cfoToEbitda": "138%",
+      "cfoToPat": "97%",
+      "priceToBook": 4.4
+    }
+  },
+  {
+    "symbol": "541557",
+    "companyName": "Fine Organic",
+    "sector": "Others",
+    "fixed": {
+      "purchasePrice": 4284,
+      "qty": 16,
+      "investment": 68544,
+      "portfolioPercent": "4%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 4339,
+      "presentValue": 69430.4,
+      "gainLoss": 886.4,
+      "gainLossPercent": "1.29%",
+      "marketCap": 16511
+    },
+    "fundamentals": {
+      "peTTM": 51.51,
+      "latestEarnings": 30.96,
+      "revenueTTM": "2,051",
+      "ebitdaTTM": 489,
+      "ebitdaPercent": "24%",
+      "pat": 386,
+      "patPercent": "19%",
+      "cfoMarch24": 606,
+      "cfo5Years": 1466,
+      "debtToEquity": 0,
+      "bookValue": 606,
+      "revenueGrowth": "20.28%",
+      "ebitdaGrowth": "23.55%",
+      "profitGrowth": "47.33%",
+      "marketCapGrowth": "21%",
+      "priceToSales": 8.05,
+      "cfoToEbitda": "81%",
+      "cfoToPat": "64%",
+      "priceToBook": 7.2
+    }
+  },
+  {
+    "symbol": "533282",
+    "companyName": "Gravita",
+    "sector": "Others",
+    "fixed": {
+      "purchasePrice": 2037,
+      "qty": 8,
+      "investment": 16296,
+      "portfolioPercent": "1%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 1815,
+      "presentValue": 14516.4,
+      "gainLoss": -1779.6,
+      "gainLossPercent": "-10.92%",
+      "marketCap": 16511
+    },
+    "fundamentals": {
+      "peTTM": 51.51,
+      "latestEarnings": 30.96,
+      "revenueTTM": 3456,
+      "ebitdaTTM": 304,
+      "ebitdaPercent": "9%",
+      "pat": 269,
+      "patPercent": "8%",
+      "cfoMarch24": 42,
+      "cfo5Years": 362,
+      "debtToEquity": 1,
+      "bookValue": 121,
+      "revenueGrowth": "30.88%",
+      "ebitdaGrowth": "8.71%",
+      "profitGrowth": "65.81%",
+      "marketCapGrowth": "123%",
+      "priceToSales": 4.78,
+      "cfoToEbitda": "724%",
+      "cfoToPat": "640%",
+      "priceToBook": 15
+    }
+  },
+  {
+    "symbol": "540719",
+    "companyName": "SBI Life",
+    "sector": "Others",
+    "fixed": {
+      "purchasePrice": 1197,
+      "qty": 49,
+      "investment": 58653,
+      "portfolioPercent": "4%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 2009,
+      "presentValue": 98463.05,
+      "gainLoss": 39810.05,
+      "gainLossPercent": "67.87%",
+      "marketCap": 3094
+    },
+    "fundamentals": {
+      "latestEarnings": -4.56,
+      "revenueTTM": "150,243",
+      "ebitdaTTM": 763,
+      "ebitdaPercent": "1%",
+      "pat": "2,181",
+      "patPercent": "1%",
+      "cfoMarch24": 29122,
+      "cfo5Years": 122806,
+      "debtToEquity": 0,
+      "bookValue": 149,
+      "revenueGrowth": "17.24%",
+      "ebitdaGrowth": "0.37%",
+      "profitGrowth": "9.16%",
+      "marketCapGrowth": "19%",
+      "priceToSales": 0.02,
+      "cfoToEbitda": "3%",
+      "cfoToPat": "7%",
+      "priceToBook": 13.5
+    }
+  },
+  {
+    "symbol": "500209",
+    "companyName": "Infy",
+    "sector": "Tech",
+    "fixed": {
+      "purchasePrice": 1647,
+      "qty": 36,
+      "investment": 59292,
+      "portfolioPercent": "4%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 1598,
+      "presentValue": 57529.8,
+      "gainLoss": -1762.2,
+      "gainLossPercent": "-2.97%",
+      "marketCap": 662622
+    },
+    "fundamentals": {
+      "peTTM": 23.58,
+      "latestEarnings": 67.74,
+      "revenueTTM": "157,045",
+      "ebitdaTTM": 37167,
+      "ebitdaPercent": "24%",
+      "pat": "26,949",
+      "patPercent": "17%",
+      "cfoMarch24": 25210,
+      "cfo5Years": 111789,
+      "debtToEquity": 0,
+      "bookValue": 212,
+      "revenueGrowth": "15.22%",
+      "ebitdaGrowth": "24.41%",
+      "profitGrowth": "10.67%",
+      "marketCapGrowth": "2%",
+      "priceToSales": 4.22,
+      "cfoToEbitda": "147%",
+      "cfoToPat": "107%",
+      "priceToBook": 7.5
+    }
+  },
+  {
+    "symbol": "543237",
+    "companyName": "Happeist Mind",
+    "sector": "Tech",
+    "fixed": {
+      "purchasePrice": 1103,
+      "qty": 45,
+      "investment": 49635,
+      "portfolioPercent": "3%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 494,
+      "presentValue": 22212,
+      "gainLoss": -27423,
+      "gainLossPercent": "-55.25%",
+      "marketCap": 7409
+    },
+    "fundamentals": {
+      "peTTM": 38.05,
+      "latestEarnings": 12.97,
+      "revenueTTM": "1,493",
+      "ebitdaTTM": 256,
+      "ebitdaPercent": "17%",
+      "pat": 216,
+      "patPercent": "14%",
+      "cfoMarch24": 189,
+      "cfo5Years": 783,
+      "debtToEquity": 0,
+      "bookValue": 99,
+      "revenueGrowth": "24.62%",
+      "ebitdaGrowth": "22.28%",
+      "profitGrowth": "14.92%",
+      "marketCapGrowth": "13%",
+      "priceToSales": 4.96,
+      "cfoToEbitda": "135%",
+      "cfoToPat": "114%",
+      "priceToBook": 5
+    }
+  },
+  {
+    "symbol": "543272",
+    "companyName": "Easemytrip",
+    "sector": "Tech",
+    "fixed": {
+      "purchasePrice": 20,
+      "qty": 1332,
+      "investment": 26640,
+      "portfolioPercent": "2%",
+      "stage2": false
+    },
+    "realtime": {
+      "cmp": 8,
+      "presentValue": 10309.68,
+      "gainLoss": -16330.32,
+      "gainLossPercent": "-61.30%",
+      "marketCap": 16511
+    },
+    "fundamentals": {
+      "peTTM": 51.51,
+      "latestEarnings": 30.96,
+      "revenueTTM": 468,
+      "ebitdaTTM": 194,
+      "ebitdaPercent": "42%",
+      "pat": 104,
+      "patPercent": "22%",
+      "cfoMarch24": 114,
+      "cfo5Years": 161,
+      "debtToEquity": 0,
+      "bookValue": 2,
+      "revenueGrowth": "51.50%",
+      "ebitdaGrowth": "46.98%",
+      "profitGrowth": "24.15%",
+      "marketCapGrowth": "50%",
+      "priceToSales": 35.28,
+      "cfoToEbitda": "170%",
+      "cfoToPat": "91%",
+      "priceToBook": 3.9
+    }
+  }
+]

@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 8-Byte Portfolio Dashboard
 
-## Getting Started
+A real-time portfolio dashboard for tracking Indian stock market investments with live prices, fundamentals, and sector-wise analysis.
 
-First, run the development server:
+**Live Demo:** [https://8-byte-portfolio-dashboard.vercel.app/](https://8-byte-portfolio-dashboard.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## About
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This is a Next.js-based portfolio dashboard that provides:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Real-time Stock Prices**: Live prices from BSE India API
+- **Fundamental Analysis**: PE ratio, Price-to-Book, EPS, ROE, and more
+- **Sector-wise Grouping**: View holdings organized by sectors
+- **Performance Tracking**: Gain/loss calculations with percentage changes
+- **Optimized API Calls**: Intelligent caching to minimize API requests
+- **Auto-refresh**: Updates every 30 seconds with latest market data
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The dashboard automatically resolves NSE symbols to BSE scripcodes and caches data for optimal performance.
 
-## Learn More
+## Installation
 
-To learn more about Next.js, take a look at the following resources:
+### Prerequisites
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Node.js 18+ 
+- npm or yarn
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Setup
 
-## Deploy on Vercel
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd 8-byte-portfolio-dashboard
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. **Run development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## API Used
+
+### BSE India APIs
+
+The dashboard uses the following BSE India APIs:
+
+#### 1. Stock Price Data
+- **Endpoint**: `https://api.bseindia.com/BseIndiaAPI/api/getScripHeaderData/w`
+- **Purpose**: Fetch real-time stock prices, OHLC data, and market information
+- **Parameters**: `scripcode` (BSE scripcode), `seriesid` (optional)
+
+#### 2. Fundamentals Data
+- **Endpoint**: `https://api.bseindia.com/BseIndiaAPI/api/ComHeadernew/w`
+- **Purpose**: Fetch fundamental metrics (PE, PB, ROE, EPS, etc.)
+- **Parameters**: `quotetype=EQ`, `scripcode`, `seriesid` (optional)
+- **Cache Duration**: 24 hours
+
+#### 3. Symbol Search
+- **Endpoint**: `https://api.bseindia.com/Msource/1D/getQouteSearch.aspx`
+- **Purpose**: Search and resolve NSE symbols to BSE scripcodes
+- **Parameters**: `Type=EQ`, `text` (symbol name), `flag=site`
+- **Cache Duration**: Permanent (one-time fetch per symbol)
+
+## Technology Stack
+
+- **Framework**: Next.js 16.0.8
+- **Language**: TypeScript
+- **UI**: React 19, Tailwind CSS
+- **Deployment**: Vercel

@@ -5,8 +5,10 @@
 
 import { PortfolioHolding } from '@/types/portfolio';
 import { getPortfolioData } from './stockData';
-import { fetchBSEData, isBSEScripcode, fetchMultipleBSEFundamentals, BSEFundamentalsData } from './bseIndia';
+import { fetchBSEData, isBSEScripcode, fetchMultipleBSEFundamentals, fetchMultipleBSEData, BSEFundamentalsData, searchBSEScripcode, BSEStockData } from './bseIndia';
 import { loadFundamentalsCache, saveFundamentalsCache } from './fundamentalsCache';
+import { loadScripcodeCache, saveScripcodeCache } from './scripcodeCache';
+import { loadPriceCache, savePriceCache, savePriceToCache } from './priceCache';
 
 export interface UpdatedPortfolioHolding extends PortfolioHolding {
   realtime: PortfolioHolding['realtime'] & {
@@ -27,6 +29,39 @@ function mapBSEFundamentalsToPortfolio(bseFundamentals: BSEFundamentalsData, exi
     latestEarnings: bseFundamentals.eps ?? existingFundamentals.latestEarnings,
     // Keep other fields from existing fundamentals
   };
+}
+
+/**
+ * Resolve BSE scripcode for a symbol (optimized - uses provided cache)
+ */
+async function resolveBSEScripcode(
+  symbol: string,
+  scripcodeCache: Map<string, string>
+): Promise<{ symbol: string; scripcode: string | null }> {
+  // If already a scripcode, return as-is
+  if (isBSEScripcode(symbol)) {
+    return { symbol, scripcode: symbol };
+  }
+
+  // Check cache first
+  const cachedScripcode = scripcodeCache.get(symbol);
+  if (cachedScripcode) {
+    return { symbol, scripcode: cachedScripcode };
+  }
+
+  // Not in cache, search for it
+  console.log(`Searching BSE scripcode for symbol: ${symbol}`);
+  const scripcode = await searchBSEScripcode(symbol);
+  
+  if (scripcode) {
+    // Add to cache (will be saved in batch later)
+    scripcodeCache.set(symbol, scripcode);
+    console.log(`Found BSE scripcode for ${symbol}: ${scripcode}`);
+    return { symbol, scripcode };
+  }
+
+  console.warn(`Could not find BSE scripcode for symbol: ${symbol}`);
+  return { symbol, scripcode: null };
 }
 
 /**
@@ -63,28 +98,88 @@ async function getFundamentalsForBSEScripcodes(scripcodes: string[]): Promise<Ma
 }
 
 /**
- * Get portfolio data with real-time prices from BSE API
+ * Get portfolio data with real-time prices from BSE API (OPTIMIZED)
  */
 export async function getPortfolioWithRealtimeData(): Promise<UpdatedPortfolioHolding[]> {
   const holdings = getPortfolioData();
-  const updatedHoldings: UpdatedPortfolioHolding[] = [];
-
-  // Collect all BSE scripcodes for batch fundamentals fetch
-  const bseScripcodes = holdings
-    .filter(h => isBSEScripcode(h.symbol))
-    .map(h => h.symbol);
-
+  
+  // OPTIMIZATION 1 & 2: Load caches once, get unique symbols
+  const scripcodeCache = await loadScripcodeCache();
+  const priceCache = await loadPriceCache();
+  const uniqueSymbols = [...new Set(holdings.map(h => h.symbol))];
+  
+  // OPTIMIZATION 1: Resolve all scripcodes in parallel with deduplication
+  const scripcodePromises = uniqueSymbols.map(symbol => 
+    resolveBSEScripcode(symbol, scripcodeCache)
+  );
+  const resolved = await Promise.all(scripcodePromises);
+  
+  const symbolToScripcode = new Map<string, string>();
+  const newMappings = new Map<string, string>();
+  
+  resolved.forEach(({ symbol, scripcode }) => {
+    if (scripcode) {
+      symbolToScripcode.set(symbol, scripcode);
+      // Track new mappings for batch write
+      if (!scripcodeCache.has(symbol)) {
+        newMappings.set(symbol, scripcode);
+      }
+    }
+  });
+  
+  // OPTIMIZATION 5: Batch write scripcode cache once
+  if (newMappings.size > 0) {
+    // Merge new mappings into existing cache
+    newMappings.forEach((scripcode, symbol) => {
+      scripcodeCache.set(symbol, scripcode);
+    });
+    await saveScripcodeCache(scripcodeCache);
+  }
+  
+  // Collect all resolved BSE scripcodes (deduplicated)
+  const uniqueScripcodes = [...new Set(Array.from(symbolToScripcode.values()))];
+  
   // Fetch fundamentals once for all BSE stocks (cached for 24 hours)
-  const fundamentalsMap = await getFundamentalsForBSEScripcodes(bseScripcodes);
-
-  for (const holding of holdings) {
+  const fundamentalsMap = await getFundamentalsForBSEScripcodes(uniqueScripcodes);
+  
+  // OPTIMIZATION 3: Batch fetch prices (check cache first, then fetch missing)
+  const scripcodesToFetch: string[] = [];
+  const priceDataMap = new Map<string, BSEStockData>();
+  
+  // Check price cache first
+  uniqueScripcodes.forEach(scripcode => {
+    const cachedPrice = priceCache.get(scripcode);
+    if (cachedPrice) {
+      priceDataMap.set(scripcode, cachedPrice);
+    } else {
+      scripcodesToFetch.push(scripcode);
+    }
+  });
+  
+  // Fetch missing prices in batch
+  if (scripcodesToFetch.length > 0) {
+    console.log(`Fetching prices for ${scripcodesToFetch.length} scripcodes...`);
+    const fetchedPrices = await fetchMultipleBSEData(scripcodesToFetch);
+    
+    // Merge fetched prices
+    fetchedPrices.forEach((data: BSEStockData, scripcode: string) => {
+      priceDataMap.set(scripcode, data);
+    });
+    
+    // OPTIMIZATION 4: Save fetched prices to cache
+    await savePriceCache(fetchedPrices);
+  } else {
+    console.log('Using cached price data for all scripcodes');
+  }
+  
+  // Map holdings to updated format
+  return holdings.map(holding => {
     const updatedHolding: UpdatedPortfolioHolding = { ...holding };
+    const scripcode = symbolToScripcode.get(holding.symbol);
 
-    // Check if symbol is a BSE scripcode
-    if (isBSEScripcode(holding.symbol)) {
+    if (scripcode) {
       try {
-        // Fetch real-time price data
-        const bseData = await fetchBSEData(holding.symbol);
+        const bseData = priceDataMap.get(scripcode);
         
         if (bseData) {
           // Calculate updated values
@@ -108,7 +203,7 @@ export async function getPortfolioWithRealtimeData(): Promise<UpdatedPortfolioHo
         }
 
         // Update fundamentals from BSE API (cached)
-        const bseFundamentals = fundamentalsMap.get(holding.symbol);
+        const bseFundamentals = fundamentalsMap.get(scripcode);
         if (bseFundamentals) {
           updatedHolding.fundamentals = mapBSEFundamentalsToPortfolio(
             bseFundamentals,
@@ -116,19 +211,17 @@ export async function getPortfolioWithRealtimeData(): Promise<UpdatedPortfolioHo
           );
         }
       } catch (error) {
-        console.error(`Error fetching BSE data for ${holding.symbol}:`, error);
-        // Keep existing data if API fails
+        console.error(`Error processing BSE data for ${holding.symbol} (scripcode: ${scripcode}):`, error);
+        // Keep existing data if processing fails
       }
     }
 
-    updatedHoldings.push(updatedHolding);
-  }
-
-  return updatedHoldings;
+    return updatedHolding;
+  });
 }
 
 /**
- * Get single holding with real-time data
+ * Get single holding with real-time data (OPTIMIZED)
  */
 export async function getHoldingWithRealtimeData(symbol: string): Promise<UpdatedPortfolioHolding | null> {
   const holdings = getPortfolioData();
@@ -140,11 +233,32 @@ export async function getHoldingWithRealtimeData(symbol: string): Promise<Update
 
   const updatedHolding: UpdatedPortfolioHolding = { ...holding };
 
-  // Check if symbol is a BSE scripcode
-  if (isBSEScripcode(holding.symbol)) {
+  // Load caches
+  const scripcodeCache = await loadScripcodeCache();
+  const priceCache = await loadPriceCache();
+  
+  // Resolve symbol to BSE scripcode
+  const { scripcode } = await resolveBSEScripcode(holding.symbol, scripcodeCache);
+  
+  // Save new mapping if found
+  if (scripcode && !scripcodeCache.has(holding.symbol)) {
+    scripcodeCache.set(holding.symbol, scripcode);
+    await saveScripcodeCache(scripcodeCache);
+  }
+
+  if (scripcode) {
     try {
-      // Fetch real-time price data
-      const bseData = await fetchBSEData(holding.symbol);
+      // Check price cache first
+      let bseData: BSEStockData | undefined = priceCache.get(scripcode);
+      
+      if (!bseData) {
+        // Fetch if not in cache
+        const fetched = await fetchBSEData(scripcode);
+        if (fetched) {
+          bseData = fetched;
+          await savePriceToCache(scripcode, fetched);
+        }
+      }
       
       if (bseData) {
         const newPresentValue = bseData.currentPrice * holding.fixed.qty;
@@ -166,8 +280,8 @@ export async function getHoldingWithRealtimeData(symbol: string): Promise<Update
       }
 
       // Fetch fundamentals (will use cache if available)
-      const fundamentalsMap = await getFundamentalsForBSEScripcodes([holding.symbol]);
-      const bseFundamentals = fundamentalsMap.get(holding.symbol);
+      const fundamentalsMap = await getFundamentalsForBSEScripcodes([scripcode]);
+      const bseFundamentals = fundamentalsMap.get(scripcode);
       if (bseFundamentals) {
         updatedHolding.fundamentals = mapBSEFundamentalsToPortfolio(
           bseFundamentals,
@@ -175,10 +289,11 @@ export async function getHoldingWithRealtimeData(symbol: string): Promise<Update
         );
       }
     } catch (error) {
-      console.error(`Error fetching BSE data for ${holding.symbol}:`, error);
+      console.error(`Error fetching BSE data for ${holding.symbol} (scripcode: ${scripcode}):`, error);
     }
   }
 
   return updatedHolding;
 }
+
 

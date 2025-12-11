@@ -57,8 +57,8 @@ export interface BSEResponse {
     EMSURL: string;
   };
   CompResp: {
-    compRes: any;
-    texturl: any;
+    compRes: unknown;
+    texturl: unknown;
   };
 }
 
@@ -139,22 +139,110 @@ export function isBSEScripcode(symbol: string): boolean {
 }
 
 /**
- * Fetch BSE data for multiple scripcodes
+ * Search for BSE scripcode by symbol name (e.g., "HDFCBANK")
+ * Returns the BSE scripcode if found
+ */
+export async function searchBSEScripcode(symbol: string): Promise<string | null> {
+  try {
+    const url = `https://api.bseindia.com/Msource/1D/getQouteSearch.aspx?Type=EQ&text=${encodeURIComponent(symbol)}&flag=site`;
+    
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'accept': 'application/json, text/plain, */*',
+        'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
+        'origin': 'https://www.bseindia.com',
+        'priority': 'u=1, i',
+        'referer': 'https://www.bseindia.com/',
+        'sec-ch-ua': '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': '"Windows"',
+        'sec-fetch-dest': 'empty',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-site': 'same-site',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36',
+      },
+      cache: 'no-store',
+    });
+
+    if (!response.ok) {
+      throw new Error(`BSE Search API error: ${response.status} ${response.statusText}`);
+    }
+
+    const html = await response.text();
+    
+    // Parse HTML to extract scripcode
+    // Pattern 1: Extract from URL path - Format: /stock-share-price/.../SYMBOL/SCRIPCODE/
+    const urlMatch = html.match(/\/stock-share-price\/[^\/]+\/[^\/]+\/(\d+)\//);
+    if (urlMatch && urlMatch[1]) {
+      return urlMatch[1];
+    }
+
+    // Pattern 2: Extract from span content - Format: <span><strong>SYMBOL</strong>&nbsp;&nbsp;&nbsp;ISIN&nbsp;&nbsp;&nbsp;SCRIPCODE</span>
+    // Look for a 5-6 digit number after the ISIN (which is typically 12 characters)
+    const spanMatch = html.match(/<strong>([^<]+)<\/strong>[^<]*INE\d{10}[^<]*?(\d{5,6})/);
+    if (spanMatch && spanMatch[2]) {
+      return spanMatch[2];
+    }
+
+    // Pattern 3: Fallback - look for any 5-6 digit number in the HTML (less reliable)
+    const fallbackMatch = html.match(/\b(\d{5,6})\b/);
+    if (fallbackMatch && fallbackMatch[1]) {
+      // Verify it's likely a scripcode (not a year or other number)
+      const num = parseInt(fallbackMatch[1]);
+      if (num >= 500000 && num <= 999999) {
+        return fallbackMatch[1];
+      }
+    }
+
+    return null;
+  } catch (error) {
+    console.error(`Error searching BSE scripcode for ${symbol}:`, error);
+    return null;
+  }
+}
+
+/**
+ * Fetch BSE data for multiple scripcodes with optimized rate limiting
  */
 export async function fetchMultipleBSEData(scripcodes: string[]): Promise<Map<string, BSEStockData>> {
   const results = new Map<string, BSEStockData>();
   
-  // Fetch in parallel with rate limiting
-  const promises = scripcodes.map(async (scripcode, index) => {
-    // Add delay to avoid rate limiting
-    await new Promise(resolve => setTimeout(resolve, index * 100));
-    const data = await fetchBSEData(scripcode);
-    if (data) {
-      results.set(scripcode, data);
-    }
-  });
+  if (scripcodes.length === 0) {
+    return results;
+  }
 
-  await Promise.all(promises);
+  // Process in concurrent batches to optimize rate limiting
+  const BATCH_SIZE = 10;
+  const BATCH_DELAY_MS = 1000; // 1 second between batches
+  
+  for (let i = 0; i < scripcodes.length; i += BATCH_SIZE) {
+    const batch = scripcodes.slice(i, i + BATCH_SIZE);
+    
+    // Fetch batch in parallel
+    const batchPromises = batch.map(async (scripcode) => {
+      try {
+        const data = await fetchBSEData(scripcode);
+        return { scripcode, data };
+      } catch (error) {
+        console.error(`Error fetching BSE data for ${scripcode}:`, error);
+        return { scripcode, data: null };
+      }
+    });
+    
+    const batchResults = await Promise.all(batchPromises);
+    batchResults.forEach(({ scripcode, data }) => {
+      if (data) {
+        results.set(scripcode, data);
+      }
+    });
+    
+    // Add delay between batches (except for the last batch)
+    if (i + BATCH_SIZE < scripcodes.length) {
+      await new Promise(resolve => setTimeout(resolve, BATCH_DELAY_MS));
+    }
+  }
+  
   return results;
 }
 
@@ -285,22 +373,46 @@ function mapBSEFundamentalsResponse(scripcode: string, data: BSEFundamentalsResp
 }
 
 /**
- * Fetch BSE fundamentals for multiple scripcodes
+ * Fetch BSE fundamentals for multiple scripcodes with optimized rate limiting
  */
 export async function fetchMultipleBSEFundamentals(scripcodes: string[]): Promise<Map<string, BSEFundamentalsData>> {
   const results = new Map<string, BSEFundamentalsData>();
   
-  // Fetch in parallel with rate limiting
-  const promises = scripcodes.map(async (scripcode, index) => {
-    // Add delay to avoid rate limiting
-    await new Promise(resolve => setTimeout(resolve, index * 100));
-    const data = await fetchBSEFundamentals(scripcode);
-    if (data) {
-      results.set(scripcode, data);
-    }
-  });
+  if (scripcodes.length === 0) {
+    return results;
+  }
 
-  await Promise.all(promises);
+  // Process in concurrent batches to optimize rate limiting
+  const BATCH_SIZE = 10;
+  const BATCH_DELAY_MS = 1000; // 1 second between batches
+  
+  for (let i = 0; i < scripcodes.length; i += BATCH_SIZE) {
+    const batch = scripcodes.slice(i, i + BATCH_SIZE);
+    
+    // Fetch batch in parallel
+    const batchPromises = batch.map(async (scripcode) => {
+      try {
+        const data = await fetchBSEFundamentals(scripcode);
+        return { scripcode, data };
+      } catch (error) {
+        console.error(`Error fetching BSE fundamentals for ${scripcode}:`, error);
+        return { scripcode, data: null };
+      }
+    });
+    
+    const batchResults = await Promise.all(batchPromises);
+    batchResults.forEach(({ scripcode, data }) => {
+      if (data) {
+        results.set(scripcode, data);
+      }
+    });
+    
+    // Add delay between batches (except for the last batch)
+    if (i + BATCH_SIZE < scripcodes.length) {
+      await new Promise(resolve => setTimeout(resolve, BATCH_DELAY_MS));
+    }
+  }
+  
   return results;
 }
 

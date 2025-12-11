@@ -25,7 +25,7 @@ export async function loadScripcodeCache(): Promise<Map<string, string>> {
     
     const cached: ScripcodeMapping = JSON.parse(cacheContent);
     return new Map(Object.entries(cached));
-  } catch (error) {
+  } catch {
     // Cache doesn't exist - return empty map
     return new Map();
   }

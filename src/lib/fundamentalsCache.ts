@@ -12,7 +12,7 @@ const CACHE_FILE = join(CACHE_DIR, 'fundamentals-cache.json');
 
 interface CachedFundamentals {
   timestamp: number;
-  data: Map<string, BSEFundamentalsData>;
+  data: [string, BSEFundamentalsData][] | Record<string, BSEFundamentalsData>;
 }
 
 const CACHE_DURATION_MS = 24 * 60 * 60 * 1000; // 24 hours

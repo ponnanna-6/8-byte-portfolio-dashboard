@@ -17,9 +17,10 @@ export default function Home() {
   const totalInvestment = holdings.reduce((sum, h) => sum + h.fixed.investment, 0);
   const totalPresentValue = holdings.reduce((sum, h) => sum + h.realtime.presentValue, 0);
   const totalGainLoss = totalPresentValue - totalInvestment;
-  const totalGainLossPercent = totalInvestment > 0
-    ? ((totalGainLoss / totalInvestment) * 100).toFixed(2)
-    : '0.00';
+  const totalGainLossPercentNum = totalInvestment > 0
+    ? (totalGainLoss / totalInvestment) * 100
+    : 0;
+  const totalGainLossPercent = totalGainLossPercentNum.toFixed(2);
 
   if (loading && holdings.length === 0) {
     return (
@@ -77,7 +78,7 @@ export default function Home() {
               Total Gain/Loss
             </div>
             <div className={`mt-2 text-2xl font-bold ${getGainLossColor(totalGainLoss)}`}>
-              {formatCurrency(totalGainLoss)} ({totalGainLossPercent >= 0 ? '+' : ''}{totalGainLossPercent}%)
+              {formatCurrency(totalGainLoss)} ({totalGainLossPercentNum >= 0 ? '+' : ''}{totalGainLossPercent}%)
             </div>
           </div>
         </div>

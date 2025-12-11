@@ -10,19 +10,13 @@ import {
   SortingState,
 } from '@tanstack/react-table';
 import { PortfolioHolding } from '@/types/portfolio';
+import { UpdatedPortfolioHolding } from '@/lib/portfolioData';
 import { formatCurrency, formatNumber, getGainLossColor } from '@/utils/helpers';
 
-interface ExtendedPortfolioHolding extends PortfolioHolding {
-  realtime?: PortfolioHolding['realtime'] & {
-    priceSource?: 'bse' | 'yahoo' | 'static';
-    lastUpdated?: string;
-  };
-}
-
-const columnHelper = createColumnHelper<PortfolioHolding>();
+const columnHelper = createColumnHelper<UpdatedPortfolioHolding>();
 
 interface PortfolioTableProps {
-  holdings: ExtendedPortfolioHolding[];
+  holdings: UpdatedPortfolioHolding[];
 }
 
 export default function PortfolioTable({ holdings }: PortfolioTableProps) {

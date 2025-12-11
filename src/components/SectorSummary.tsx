@@ -9,9 +9,10 @@ interface SectorSummaryProps {
 }
 
 export default function SectorSummary({ summary }: SectorSummaryProps) {
-  const gainLossPercent = summary.totalInvestment > 0
-    ? ((summary.totalGainLoss / summary.totalInvestment) * 100).toFixed(2)
-    : '0.00';
+  const gainLossPercentNum = summary.totalInvestment > 0
+    ? (summary.totalGainLoss / summary.totalInvestment) * 100
+    : 0;
+  const gainLossPercent = gainLossPercentNum.toFixed(2);
 
   return (
     <div className="mb-8 rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-950">
@@ -36,7 +37,7 @@ export default function SectorSummary({ summary }: SectorSummaryProps) {
             <div className="text-right">
               <div className="text-xs text-gray-600 dark:text-gray-400">Gain/Loss</div>
               <div className={`text-sm font-semibold ${getGainLossColor(summary.totalGainLoss)}`}>
-                {formatCurrency(summary.totalGainLoss)} ({gainLossPercent >= 0 ? '+' : ''}{gainLossPercent}%)
+                {formatCurrency(summary.totalGainLoss)} ({gainLossPercentNum >= 0 ? '+' : ''}{gainLossPercent}%)
               </div>
             </div>
           </div>

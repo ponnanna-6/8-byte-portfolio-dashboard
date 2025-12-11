@@ -12,10 +12,17 @@ import {
 import { PortfolioHolding } from '@/types/portfolio';
 import { formatCurrency, formatNumber, getGainLossColor } from '@/utils/helpers';
 
+interface ExtendedPortfolioHolding extends PortfolioHolding {
+  realtime?: PortfolioHolding['realtime'] & {
+    priceSource?: 'bse' | 'yahoo' | 'static';
+    lastUpdated?: string;
+  };
+}
+
 const columnHelper = createColumnHelper<PortfolioHolding>();
 
 interface PortfolioTableProps {
-  holdings: PortfolioHolding[];
+  holdings: ExtendedPortfolioHolding[];
 }
 
 export default function PortfolioTable({ holdings }: PortfolioTableProps) {
@@ -57,7 +64,20 @@ export default function PortfolioTable({ holdings }: PortfolioTableProps) {
       }),
       columnHelper.accessor('realtime.cmp', {
         header: 'CMP',
-        cell: (info) => formatCurrency(info.getValue()),
+        cell: (info) => {
+          const holding = info.row.original;
+          const priceSource = holding.realtime?.priceSource;
+          return (
+            <div className="flex items-center gap-2">
+              <span>{formatCurrency(info.getValue())}</span>
+              {priceSource === 'bse' && (
+                <span className="text-xs px-1.5 py-0.5 rounded bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400" title="Live from BSE">
+                  LIVE
+                </span>
+              )}
+            </div>
+          );
+        },
       }),
       columnHelper.accessor('realtime.presentValue', {
         header: 'Present Value',

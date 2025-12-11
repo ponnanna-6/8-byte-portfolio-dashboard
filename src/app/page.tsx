@@ -1,13 +1,18 @@
 'use client';
 
 import { useMemo } from 'react';
-import { getPortfolioData, getSectorSummaries } from '@/lib/stockData';
+import { getSectorSummaries } from '@/lib/stockData';
+import { usePortfolioData } from '@/hooks/usePortfolioData';
 import SectorSummary from '@/components/SectorSummary';
 import { formatCurrency, getGainLossColor } from '@/utils/helpers';
 
 export default function Home() {
-  const holdings = useMemo(() => getPortfolioData(), []);
-  const sectorSummaries = useMemo(() => getSectorSummaries(holdings), [holdings]);
+  const { holdings, loading, lastUpdated } = usePortfolioData();
+  
+  const sectorSummaries = useMemo(() => {
+    if (holdings.length === 0) return [];
+    return getSectorSummaries(holdings);
+  }, [holdings]);
 
   const totalInvestment = holdings.reduce((sum, h) => sum + h.fixed.investment, 0);
   const totalPresentValue = holdings.reduce((sum, h) => sum + h.realtime.presentValue, 0);
@@ -16,17 +21,37 @@ export default function Home() {
     ? ((totalGainLoss / totalInvestment) * 100).toFixed(2)
     : '0.00';
 
+  if (loading && holdings.length === 0) {
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600 dark:text-gray-400">Loading portfolio data...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
-            Portfolio Dashboard
-          </h1>
-          <p className="mt-2 text-gray-600 dark:text-gray-400">
-            Real-time insights into your investment portfolio
-          </p>
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+                Portfolio Dashboard
+              </h1>
+              <p className="mt-2 text-gray-600 dark:text-gray-400">
+                Real-time insights into your investment portfolio
+              </p>
+            </div>
+            {lastUpdated && (
+              <div className="text-sm text-gray-500 dark:text-gray-400">
+                Last updated: {lastUpdated}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Portfolio Summary Cards */}
